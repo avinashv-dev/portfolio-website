@@ -1,0 +1,207 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Editorial actor portfolio design system.
+ *
+ * Palette: warm bone paper, deep ink, burnt sienna accent, clay neutrals.
+ * Typography: Instrument Serif for display, Manrope for UI/body.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-paper: var(--paper);
+  --color-clay: var(--clay);
+  --color-sienna: var(--sienna);
+  --color-sage: var(--sage);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --paper: oklch(0.965 0.012 85);
+  --ink: oklch(0.19 0.014 55);
+  --ink-foreground: oklch(0.95 0.01 85);
+  --sienna: oklch(0.55 0.14 42);
+  --clay: oklch(0.86 0.02 75);
+  --sage: oklch(0.62 0.045 140);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.985 0.008 85);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.985 0.008 85);
+  --popover-foreground: var(--ink);
+  --primary: var(--sienna);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --secondary: oklch(0.92 0.016 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.92 0.016 80);
+  --muted-foreground: oklch(0.45 0.02 60);
+  --accent: oklch(0.9 0.03 70);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.86 0.018 78);
+  --input: oklch(0.86 0.018 78);
+  --ring: var(--sienna);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  ::selection {
+    background-color: var(--sienna);
+    color: var(--ink-foreground);
+  }
+}
+
+@utility font-display {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility label-caps {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@utility paper-grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(
+        circle at 12% 18%,
+        color-mix(in oklab, var(--sienna) 9%, transparent),
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 88% 72%,
+        color-mix(in oklab, var(--sage) 12%, transparent),
+        transparent 45%
+      );
+  }
+}
+
+@utility rule-x {
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--ink) 30%, transparent),
+    transparent
+  );
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility lift {
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 26px 60px -30px color-mix(in oklab, var(--ink) 55%, transparent);
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x 34s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
