@@ -5,13 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Editorial actor portfolio design system.
+ * Liquid-glass actor portfolio design system.
  *
- * Palette: warm bone paper, deep ink, burnt sienna accent, clay neutrals.
- * Typography: Instrument Serif for display, Manrope for UI/body.
+ * Palette: deep indigo-navy canvas, violet + cyan aurora accents, frosted glass surfaces.
+ * Typography: Clash Display for headings (500/600/700), Switzer for body/UI (400/500/600).
  */
 
 @theme inline {
+  --font-heading: "Clash Display", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Switzer", ui-sans-serif, system-ui, sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -45,37 +49,39 @@
   --color-paper: var(--paper);
   --color-clay: var(--clay);
   --color-sienna: var(--sienna);
+  --color-sienna-deep: var(--sienna-deep);
   --color-sage: var(--sage);
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 1.25rem;
 
-  --paper: oklch(0.965 0.012 85);
-  --ink: oklch(0.19 0.014 55);
-  --ink-foreground: oklch(0.95 0.01 85);
-  --sienna: oklch(0.55 0.14 42);
-  --clay: oklch(0.86 0.02 75);
-  --sage: oklch(0.62 0.045 140);
+  --paper: oklch(0.145 0.035 278);
+  --ink: oklch(0.075 0.02 278);
+  --ink-foreground: oklch(0.97 0.008 268);
+  --sienna: oklch(0.72 0.19 302);
+  --sienna-deep: oklch(0.56 0.19 298);
+  --clay: oklch(0.24 0.032 278);
+  --sage: oklch(0.8 0.135 193);
 
   --background: var(--paper);
-  --foreground: var(--ink);
-  --card: oklch(0.985 0.008 85);
-  --card-foreground: var(--ink);
-  --popover: oklch(0.985 0.008 85);
-  --popover-foreground: var(--ink);
+  --foreground: var(--ink-foreground);
+  --card: oklch(0.2 0.032 278);
+  --card-foreground: var(--ink-foreground);
+  --popover: oklch(0.19 0.032 278);
+  --popover-foreground: var(--ink-foreground);
   --primary: var(--sienna);
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(0.92 0.016 80);
-  --secondary-foreground: var(--ink);
-  --muted: oklch(0.92 0.016 80);
-  --muted-foreground: oklch(0.45 0.02 60);
-  --accent: oklch(0.9 0.03 70);
-  --accent-foreground: var(--ink);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.86 0.018 78);
-  --input: oklch(0.86 0.018 78);
+  --primary-foreground: oklch(0.14 0.03 300);
+  --secondary: oklch(0.22 0.032 278);
+  --secondary-foreground: var(--ink-foreground);
+  --muted: oklch(0.22 0.032 278);
+  --muted-foreground: oklch(0.7 0.02 270);
+  --accent: oklch(0.3 0.05 290);
+  --accent-foreground: var(--ink-foreground);
+  --destructive: oklch(0.65 0.24 25);
+  --destructive-foreground: oklch(0.98 0.005 90);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 14%);
   --ring: var(--sienna);
 }
 
@@ -89,22 +95,18 @@
   }
 
   body {
+    position: relative;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     font-feature-settings: "kern" 1, "liga" 1;
+    overflow-x: clip;
   }
 
   ::selection {
     background-color: var(--sienna);
-    color: var(--ink-foreground);
+    color: var(--primary-foreground);
   }
-}
-
-@utility font-display {
-  font-family: "Instrument Serif", ui-serif, Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
 }
 
 @utility text-balance {
@@ -118,24 +120,103 @@
   font-weight: 600;
 }
 
-@utility paper-grain {
+@utility aurora-bg {
+  position: fixed;
+  inset: -12%;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(
+      ellipse 55% 45% at 12% 8%,
+      color-mix(in oklab, var(--sienna) 55%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 42% at 90% 14%,
+      color-mix(in oklab, var(--sage) 48%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 48% 40% at 20% 92%,
+      color-mix(in oklab, var(--sage) 34%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 52% 46% at 92% 90%,
+      color-mix(in oklab, var(--sienna) 40%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      color-mix(in oklab, var(--sienna-deep) 16%, transparent),
+      transparent 65%
+    );
+  filter: blur(70px) saturate(140%);
+  animation: aurora-drift 46s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2.5%, 2%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(2%, -2.5%, 0) scale(1);
+  }
+}
+
+@utility glass {
   position: relative;
-  &::after {
+  background-color: color-mix(in oklab, var(--ink-foreground) 6%, transparent);
+  backdrop-filter: blur(26px) saturate(160%);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--ink-foreground) 14%, transparent);
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, var(--ink-foreground) 16%, transparent),
+    0 30px 60px -32px rgba(0, 0, 0, 0.6);
+}
+
+@utility glass-strong {
+  background-color: color-mix(in oklab, var(--ink-foreground) 10%, transparent);
+  backdrop-filter: blur(32px) saturate(170%);
+  -webkit-backdrop-filter: blur(32px) saturate(170%);
+  border: 1px solid color-mix(in oklab, var(--ink-foreground) 20%, transparent);
+}
+
+@utility glass-chip {
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background-color: color-mix(in oklab, var(--ink) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--ink-foreground) 20%, transparent);
+}
+
+@utility gradient-text {
+  background-image: linear-gradient(115deg, var(--sienna), var(--sage));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility gradient-fill {
+  background-image: linear-gradient(135deg, var(--sienna), var(--sage));
+}
+
+@utility spotlight {
+  position: relative;
+  &::before {
     content: "";
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    background-image: radial-gradient(
-        circle at 12% 18%,
-        color-mix(in oklab, var(--sienna) 9%, transparent),
-        transparent 42%
-      ),
-      radial-gradient(
-        circle at 88% 72%,
-        color-mix(in oklab, var(--sage) 12%, transparent),
-        transparent 45%
-      );
+    inset: -14%;
+    z-index: -1;
+    background: radial-gradient(
+      circle at 68% 22%,
+      color-mix(in oklab, var(--sienna) 45%, transparent),
+      transparent 55%
+    );
+    filter: blur(30px);
   }
 }
 
@@ -143,7 +224,7 @@
   height: 1px;
   background-image: linear-gradient(
     to right,
-    color-mix(in oklab, var(--ink) 30%, transparent),
+    color-mix(in oklab, var(--ink-foreground) 35%, transparent),
     transparent
   );
 }
@@ -167,8 +248,34 @@
     box-shadow 0.45s ease,
     border-color 0.45s ease;
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 26px 60px -30px color-mix(in oklab, var(--ink) 55%, transparent);
+    transform: translateY(-6px);
+    box-shadow:
+      0 30px 70px -32px rgba(0, 0, 0, 0.65),
+      0 10px 30px -16px color-mix(in oklab, var(--sienna) 45%, transparent),
+      0 10px 34px -20px color-mix(in oklab, var(--sage) 35%, transparent);
+  }
+}
+
+@utility glow-ring {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--sienna) 75%, transparent),
+      transparent 40%,
+      color-mix(in oklab, var(--sage) 60%, transparent)
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  &:hover::before {
+    opacity: 1;
   }
 }
 
@@ -199,6 +306,9 @@
     transition: none;
   }
   .animate-marquee {
+    animation: none;
+  }
+  .aurora-bg {
     animation: none;
   }
   html {

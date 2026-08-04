@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   Mail,
   Phone,
@@ -11,43 +11,58 @@ import {
   Play,
   Instagram,
   ArrowUpRight,
-  ArrowDown,
 } from "lucide-react";
 
-import photoStreet from "../assets/MG_0812_1.jpg.asset.json";
-import photoSky from "../assets/20231105_122903.jpg.asset.json";
-import photoMono from "../assets/20240619_172907.jpg.asset.json";
-import photoBw from "../assets/20240710_155724.jpg.asset.json";
-import photoCloseUp from "../assets/Avinash_1.jpg.asset.json";
-import photoFull from "../assets/Avinash_2.jpg.asset.json";
-import photoMundu from "../assets/Avinash_3.jpg.asset.json";
-import photoSmile from "../assets/IMG_1946.jpg.asset.json";
-import photoBag from "../assets/Screenshot_2026-06-13_070043.png.asset.json";
-import photoIntense from "../assets/Screenshot_2026-06-22_225425.png.asset.json";
+import photoStreet from "../assets/_MG_0812 (1).jpg";
+import photoSky from "../assets/actor-cover pic.png";
+import photoMono from "../assets/20240619_172907.jpg";
+import photoBw from "../assets/Barabas.jpg";
+import photoCloseUp from "../assets/Avinash 1.png";
+import photoFull from "../assets/IMG_9608.jpg";
+import photoMundu from "../assets/Avinash 3.jpg";
+import photoSmile from "../assets/Avinash1.jpg";
+import photoBag from "../assets/model_photoshoot.png";
+import photoIntense from "../assets/Screenshot 2026-06-22 225425.png";
+import photoEdge from "../assets/photoshoot.png";
+import photoStudio from "../assets/1000 Babies.png";
+import photoWarm from "../assets/IMG-20251215-WA0050(1) (1).jpg";
+import photoKottiClose from "../assets/Kottikalaasham - close.jpg";
+import photoKottiFull from "../assets/Kottikalaasham - full.jpg";
+import photoKottiMid from "../assets/Kottikalaasham - mid.jpg";
+import photoModel from "../assets/model.png";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
-const photos = [
-  { src: photoStreet.url, alt: "Avinash Vijayan on location — street portrait" },
-  { src: photoMundu.url, alt: "Avinash Vijayan in a traditional mundu look" },
-  { src: photoIntense.url, alt: "Close-up character study of Avinash Vijayan" },
-  { src: photoBw.url, alt: "Black and white headshot of Avinash Vijayan" },
-  { src: photoSmile.url, alt: "Smiling headshot of Avinash Vijayan" },
-  { src: photoFull.url, alt: "Full-length outdoor shot of Avinash Vijayan" },
-  { src: photoSky.url, alt: "Low angle outdoor portrait of Avinash Vijayan" },
-  { src: photoBag.url, alt: "Character look — Avinash Vijayan with glasses" },
+const photos: { src: string; alt: string; ratio: number }[] = [
+  { src: photoSky, alt: "Low angle outdoor portrait of Avinash Vijayan", ratio: 2.1618 },
+  { src: photoMundu, alt: "Avinash Vijayan in a traditional mundu look", ratio: 0.6667 },
+  { src: photoIntense, alt: "Close-up character study of Avinash Vijayan", ratio: 1.1609 },
+  { src: photoBw, alt: "Black and white headshot of Avinash Vijayan", ratio: 0.5133 },
+  { src: photoSmile, alt: "Smiling headshot of Avinash Vijayan", ratio: 0.7993 },
+  { src: photoFull, alt: "Full-length outdoor shot of Avinash Vijayan", ratio: 0.6666 },
+  { src: photoStreet, alt: "Avinash Vijayan on location — street portrait", ratio: 0.6664 },
+  { src: photoBag, alt: "Character look — Avinash Vijayan with glasses", ratio: 0.6293 },
+  { src: photoEdge, alt: "Editorial character study of Avinash Vijayan", ratio: 0.5496 },
+  { src: photoStudio, alt: "Studio headshot of Avinash Vijayan", ratio: 0.5334 },
+  { src: photoWarm, alt: "Portrait study of Avinash Vijayan", ratio: 0.5 },
+  { src: photoCloseUp, alt: "Close-up portrait of Avinash Vijayan", ratio: 0.7143 },
+  { src: photoMono, alt: "Avinash Vijayan looking over his shoulder in a forest", ratio: 0.462 },
+  { src: photoKottiClose, alt: "Kottikalaasham — close-up character look", ratio: 0.8205 },
+  { src: photoKottiMid, alt: "Kottikalaasham — mid-shot character look", ratio: 0.773 },
+  { src: photoKottiFull, alt: "Kottikalaasham — full-length character look", ratio: 0.5606 },
+  { src: photoModel, alt: "Close-up profile portrait of Avinash Vijayan with glasses", ratio: 0.8527 },
 ];
 
 const videos = [
-  { id: "1215364108", label: "Torc — Advertisement", featured: true },
-  { id: "1215142541", label: "Showreel Clip 01" },
-  { id: "1215143652", label: "Showreel Clip 02" },
-  { id: "1215143766", label: "Showreel Clip 03" },
-  { id: "1215143829", label: "Showreel Clip 04" },
-  { id: "1215143879", label: "Showreel Clip 05" },
-  { id: "1215144497", label: "Showreel Clip 06" },
-  { id: "1215145427", label: "Showreel Clip 07" },
-  { id: "1215145570", label: "Showreel Clip 08" },
+  { id: "1215364108", label: "Torc — Advertisement", tag: "Advertisement", featured: true },
+  { id: "1215142541", label: "Showreel Clip 01", tag: "Showreel" },
+  { id: "1215143652", label: "Showreel Clip 02", tag: "Showreel" },
+  { id: "1215143766", label: "Showreel Clip 03", tag: "Showreel" },
+  { id: "1215143829", label: "Showreel Clip 04", tag: "Showreel" },
+  { id: "1215143879", label: "Showreel Clip 05", tag: "Showreel" },
+  { id: "1215144497", label: "Showreel Clip 06", tag: "Showreel" },
+  { id: "1215145427", label: "Showreel Clip 07", tag: "Showreel" },
+  { id: "1215145570", label: "Showreel Clip 08", tag: "Showreel" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -67,9 +82,9 @@ export const Route = createFileRoute("/")({
           "Showreel, credits and headshots of Avinash Vijayan — actor based in Ernakulam, Kerala. Available for films, web series and commercials.",
       },
       { property: "og:type", content: "profile" },
-      { property: "og:image", content: photoCloseUp.url },
+      { property: "og:image", content: photoSky },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: photoCloseUp.url },
+      { name: "twitter:image", content: photoSky },
     ],
     scripts: [
       {
@@ -79,7 +94,7 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Avinash Vijayan",
           jobTitle: "Actor",
-          image: photoCloseUp.url,
+          image: photoSky,
           email: "mailto:av.8129620272@gmail.com",
           telephone: "+91-8129620272",
           sameAs: [INSTAGRAM_URL],
@@ -201,17 +216,11 @@ function useScrollReveal() {
   }, []);
 }
 
-function VideoCard({
-  video,
-  featured = false,
-}: {
-  video: { id: string; label: string };
-  featured?: boolean;
-}) {
+function VideoCard({ video }: { video: { id: string; label: string; tag: string } }) {
   const [playing, setPlaying] = useState(false);
   return (
     <figure className="group">
-      <div className="relative aspect-video w-full overflow-hidden rounded-sm bg-ink/60">
+      <div className="glow-ring relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
         {playing ? (
           <iframe
             src={`https://player.vimeo.com/video/${video.id}?autoplay=1&title=0&byline=0&portrait=0`}
@@ -233,13 +242,12 @@ function VideoCard({
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
             />
-            <span className="absolute inset-0 bg-ink/25 transition-colors group-hover:bg-ink/10" />
-            <span
-              className={`absolute left-1/2 top-1/2 flex ${
-                featured ? "h-20 w-20" : "h-14 w-14"
-              } -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform duration-300 group-hover:scale-110`}
-            >
-              <Play size={featured ? 26 : 18} fill="currentColor" />
+            <span className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent transition-colors group-hover:from-ink/50" />
+            <span className="glass-chip absolute left-3 top-3 rounded-full px-2.5 py-1 text-ink-foreground sm:left-4 sm:top-4">
+              <span className="label-caps">{video.tag}</span>
+            </span>
+            <span className="gradient-fill absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-primary-foreground shadow-lg transition-transform duration-300 group-hover:scale-110">
+              <Play size={18} fill="currentColor" />
             </span>
           </button>
         )}
@@ -257,6 +265,7 @@ function Index() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [galleryCols, setGalleryCols] = useState(2);
 
   useScrollReveal();
 
@@ -266,6 +275,35 @@ function Index() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const computeCols = () => {
+      const w = window.innerWidth;
+      setGalleryCols(w >= 1280 ? 4 : w >= 640 ? 3 : 2);
+    };
+    computeCols();
+    window.addEventListener("resize", computeCols);
+    return () => window.removeEventListener("resize", computeCols);
+  }, []);
+
+  // Greedy "shortest column" masonry: each photo renders at its true aspect
+  // ratio (no cropping), placed into whichever column is currently shortest.
+  const galleryColumns = useMemo(() => {
+    const columns: { photo: (typeof photos)[number]; index: number }[][] = Array.from(
+      { length: galleryCols },
+      () => [],
+    );
+    const heights = new Array(galleryCols).fill(0);
+    photos.forEach((photo, index) => {
+      let shortest = 0;
+      for (let c = 1; c < galleryCols; c++) {
+        if (heights[c]! < heights[shortest]!) shortest = c;
+      }
+      columns[shortest]!.push({ photo, index });
+      heights[shortest] += 1 / photo.ratio;
+    });
+    return columns;
+  }, [galleryCols]);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -310,30 +348,37 @@ function Index() {
   }, [lightboxIndex, closeLightbox, step]);
 
   return (
-    <div className="min-h-dvh bg-background text-foreground">
+    <div className="relative min-h-dvh bg-background text-foreground">
+      <div className="aurora-bg" aria-hidden="true" />
+
       {/* Nav */}
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "border-b border-border bg-background/85 backdrop-blur-xl" : "border-b border-transparent"
-        }`}
-      >
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 sm:px-8">
-          <a href="#top" className="font-display text-xl tracking-tight sm:text-2xl">
-            Avinash Vijayan
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+        <div
+          className={`glass mx-auto flex max-w-[1400px] items-center justify-between rounded-full px-5 py-3 transition-all duration-500 sm:px-7 ${
+            scrolled ? "glass-strong" : ""
+          }`}
+        >
+          <a href="#top" className="font-heading text-xl font-medium tracking-[-0.02em] sm:text-2xl">
+            Avinash <span className="gradient-text">Vijayan</span>
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`label-caps transition-colors hover:text-primary ${
+                  className={`label-caps relative pb-1 transition-colors hover:text-primary ${
                     isActive ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
                   {link.label}
+                  <span
+                    className={`absolute inset-x-0 -bottom-0.5 h-px bg-primary transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
                 </a>
               );
             })}
@@ -342,21 +387,14 @@ function Index() {
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Instagram"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(135deg,#feda75,#d62976_55%,#4f5bd5)] shadow-[0_6px_18px_-6px_rgba(214,41,118,0.7)] backdrop-blur-md transition-transform hover:scale-110"
             >
-              <Instagram size={18} />
-            </a>
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-ink-foreground transition-colors hover:bg-primary"
-            >
-              Casting
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+              <Instagram size={16} className="text-white" strokeWidth={2} />
             </a>
           </nav>
 
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border lg:hidden"
+            className="glass inline-flex h-10 w-10 items-center justify-center rounded-full lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
@@ -368,7 +406,7 @@ function Index() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 bg-ink text-ink-foreground transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-ink/95 text-ink-foreground backdrop-blur-2xl transition-all duration-300 lg:hidden ${
           isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -378,7 +416,7 @@ function Index() {
               key={link.href}
               href={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="flex items-baseline gap-4 border-b border-ink-foreground/15 py-4 font-display text-4xl"
+              className="flex items-baseline gap-4 border-b border-ink-foreground/15 py-4 font-heading text-4xl font-semibold leading-[1.05] tracking-[-0.03em]"
             >
               <span className="label-caps text-primary">0{i + 1}</span>
               {link.label}
@@ -389,19 +427,19 @@ function Index() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-foreground/25 px-6 py-3 text-sm"
+              className="glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm"
             >
               <Instagram size={16} /> @actor.avinaash_vijayan
             </a>
             <a
               href="tel:+918129620272"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-foreground/25 px-6 py-3 text-sm"
+              className="glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm"
             >
               <Phone size={16} /> +91 8129620272
             </a>
             <a
               href="mailto:av.8129620272@gmail.com"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground"
+              className="gradient-fill inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground"
             >
               <Mail size={16} /> Email me
             </a>
@@ -410,27 +448,37 @@ function Index() {
       </div>
 
       <main id="top">
-        {/* Hero — editorial split */}
-        <section className="paper-grain relative overflow-hidden pb-14 pt-28 sm:pt-32 lg:pb-24 lg:pt-40">
+        {/* Hero */}
+        <section className="relative overflow-hidden pb-10 pt-24 lg:pb-14">
           <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-14">
-              <div className="reveal">
-                <span className="label-caps text-primary">Ernakulam, Kerala · India</span>
-                <h1 className="mt-5 font-display text-[clamp(3rem,12vw,8.5rem)] leading-[0.86] tracking-tight">
-                  Avinash
-                  <br />
-                  <span className="italic text-primary">Vijayan</span>
+            <div className="reveal spotlight relative overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
+              <img
+                src={photoSky}
+                alt="Cinematic portrait of actor Avinash Vijayan"
+                className="absolute inset-0 h-full w-full object-cover object-[50%_15%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
+
+              <div className="glass-chip absolute left-4 top-4 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-ink-foreground sm:left-6 sm:top-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="label-caps">Available for Casting</span>
+              </div>
+
+              <div className="glass relative mx-4 mt-16 mb-4 rounded-[1.75rem] p-4 sm:mx-6 sm:mt-20 sm:mb-6 sm:p-7 lg:max-w-2xl lg:p-9">
+                <span className="label-caps text-primary">Kerala · India</span>
+                <h1 className="mt-2 font-heading text-[clamp(2.4rem,7vw,6rem)] font-bold leading-[1.05] tracking-[-0.04em] sm:mt-3">
+                  Avinash <span className="gradient-text">Vijayan</span>
                 </h1>
-                <div className="rule-x mt-8 w-full max-w-sm" />
-                <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <div className="rule-x mt-3 w-full max-w-sm sm:mt-5" />
+                <p className="mt-3 max-w-lg text-base leading-relaxed text-ink-foreground/85 [text-shadow:0_1px_12px_rgba(0,0,0,0.35)] sm:mt-4 sm:text-lg">
                   Actor and story-driven performer working across feature films, streaming
                   series and brand films — grounded performances, physical craft, four
                   languages.
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="mt-4 flex flex-col gap-3 sm:mt-6 sm:flex-row sm:flex-wrap">
                   <a
                     href="#reel"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-transform hover:-translate-y-0.5"
+                    className="gradient-fill inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] sm:px-7 sm:py-3.5 text-primary-foreground shadow-[0_16px_40px_-16px_var(--sienna)] transition-transform hover:-translate-y-0.5"
                   >
                     <Play size={14} fill="currentColor" /> Watch the Reel
                   </a>
@@ -438,82 +486,61 @@ function Index() {
                     href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/25 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] transition-colors hover:border-primary hover:text-primary"
+                    className="glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] sm:px-7 sm:py-3.5 transition-colors hover:text-primary"
                   >
                     <Instagram size={14} /> Instagram
                   </a>
                 </div>
               </div>
-
-              <div className="reveal relative">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-                  <img
-                    src={photoCloseUp.url}
-                    alt="Portrait of actor Avinash Vijayan"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-5 -left-4 hidden w-40 overflow-hidden rounded-sm border-4 border-background sm:block lg:-left-10 lg:w-48">
-                  <img
-                    src={photoBw.url}
-                    alt="Black and white headshot of Avinash Vijayan"
-                    className="aspect-[3/4] h-full w-full object-cover"
-                  />
-                </div>
-              </div>
             </div>
 
-            <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden border-y border-border bg-border sm:grid-cols-4">
+            <dl className="glass mt-8 grid grid-cols-2 divide-x divide-y divide-border rounded-2xl sm:grid-cols-4 sm:divide-y-0">
               {stats.map((s) => (
-                <div key={s.label} className="bg-background px-4 py-6 text-center sm:py-8">
-                  <dt className="font-display text-4xl text-primary sm:text-5xl">{s.value}</dt>
-                  <dd className="label-caps mt-2 text-muted-foreground">{s.label}</dd>
+                <div key={s.label} className="flex items-center justify-center gap-2 px-3 py-3 sm:gap-2.5">
+                  <dt className="font-heading text-xl font-medium tracking-[-0.02em] text-primary sm:text-2xl">
+                    {s.value}
+                  </dt>
+                  <dd className="label-caps text-muted-foreground">{s.label}</dd>
                 </div>
               ))}
             </dl>
 
-            <a
-              href="#reel"
-              className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <ArrowDown size={15} /> Scroll to explore
-            </a>
           </div>
         </section>
 
         {/* Marquee */}
-        <div className="overflow-hidden border-y border-border bg-secondary py-4">
-          <div className="animate-marquee flex w-max gap-10 whitespace-nowrap pr-10">
-            {[...marqueeItems, ...marqueeItems].map((item, i) => (
-              <span key={i} className="label-caps flex items-center gap-10 text-muted-foreground">
-                {item}
-                <span className="h-1 w-1 rounded-full bg-primary" />
-              </span>
-            ))}
+        <div className="mx-auto mt-6 max-w-[1400px] px-5 sm:mt-8 sm:px-8">
+          <div className="glass overflow-hidden rounded-full py-3">
+            <div className="animate-marquee flex w-max gap-10 whitespace-nowrap pr-10">
+              {[...marqueeItems, ...marqueeItems].map((item, i) => (
+                <span key={i} className="label-caps flex items-center gap-10 text-muted-foreground">
+                  {item}
+                  <span
+                    className={`h-1 w-1 rounded-full ${i % 2 === 0 ? "bg-primary" : "bg-sage"}`}
+                  />
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Reel — dark section */}
-        <section id="reel" className="bg-ink py-20 text-ink-foreground sm:py-28">
+        {/* Reel */}
+        <section id="reel" className="pt-12 sm:pt-16">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal flex flex-wrap items-end justify-between gap-4">
               <div>
                 <span className="label-caps text-primary">01 — Showreel</span>
-                <h2 className="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] leading-[0.95]">
-                  Watch the <span className="italic text-primary">work</span>
+                <h2 className="mt-3 font-heading text-[clamp(2.625rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+                  Watch the <span className="gradient-text">work</span>
                 </h2>
               </div>
-              <p className="max-w-sm text-sm leading-relaxed text-ink-foreground/60">
+              <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:max-w-none sm:whitespace-nowrap">
                 Selected scenes, commercials and character clips. Tap any frame to play.
               </p>
             </div>
 
-            <div className="reveal mt-12">
-              <VideoCard video={videos[0]!} featured />
-            </div>
-
-            <div className="reveal mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {videos.slice(1).map((v) => (
+            <div className="reveal mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {videos.map((v) => (
                 <VideoCard key={v.id} video={v} />
               ))}
             </div>
@@ -521,25 +548,27 @@ function Index() {
         </section>
 
         {/* Profile */}
-        <section id="profile" className="py-20 sm:py-28">
-          <div className="mx-auto grid max-w-[1400px] gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <section id="profile" className="pt-12 sm:pt-16">
+          <div className="mx-auto grid max-w-[1400px] gap-8 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
             <div className="reveal">
-              <div className="overflow-hidden rounded-sm">
-                <img
-                  src={photoMono.url}
-                  alt="Avinash Vijayan looking over his shoulder in a forest"
-                  loading="lazy"
-                  className="aspect-[3/4] w-full object-cover"
-                />
+              <div className="glass lift overflow-hidden rounded-[2rem] p-2">
+                <div className="overflow-hidden rounded-[1.5rem]">
+                  <img
+                    src={photoMono}
+                    alt="Avinash Vijayan looking over his shoulder in a forest"
+                    loading="lazy"
+                    className="aspect-[3/4] w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
             <div className="reveal">
               <span className="label-caps text-primary">02 — Profile</span>
-              <h2 className="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] leading-[0.95]">
-                A performer built on <span className="italic text-primary">craft</span>
+              <h2 className="mt-3 font-heading text-[clamp(2.625rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+                A performer built on <span className="gradient-text">craft</span>
               </h2>
-              <p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Based in Ernakulam, Kerala, Avinash Vijayan brings a story-first instinct to
                 every role — from streaming drama on Disney+ Hotstar and SonyLIV to
                 independent shorts and national brand films. Trained across leading Kerala
@@ -547,21 +576,23 @@ function Index() {
                 grounded realism and physically demanding action.
               </p>
 
-              <div className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2">
+              <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
                 {skills.map((s) => (
-                  <div key={s.label} className="bg-background p-6">
-                    <h3 className="font-display text-2xl">{s.label}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{s.detail}</p>
+                  <div key={s.label} className="glass rounded-lg p-3">
+                    <h3 className="font-heading text-sm font-medium tracking-[-0.01em]">{s.label}</h3>
+                    <p className="mt-1 text-xs text-muted-foreground">{s.detail}</p>
                   </div>
                 ))}
               </div>
 
-              <h3 className="label-caps mt-12 text-muted-foreground">Training</h3>
-              <ul className="mt-4 divide-y divide-border border-y border-border">
+              <h3 className="label-caps mt-6 text-muted-foreground">Training</h3>
+              <ul className="glass mt-3 divide-y divide-border rounded-lg px-4">
                 {training.map((t) => (
-                  <li key={t.title} className="flex items-baseline justify-between gap-4 py-4">
-                    <span className="font-display text-xl sm:text-2xl">{t.title}</span>
-                    <span className="text-right text-xs uppercase tracking-widest text-muted-foreground">
+                  <li key={t.title} className="flex items-baseline justify-between gap-4 py-2">
+                    <span className="font-heading text-sm font-medium tracking-[-0.01em] sm:text-base">
+                      {t.title}
+                    </span>
+                    <span className="text-right text-[10px] uppercase tracking-widest text-muted-foreground">
                       {t.detail}
                     </span>
                   </li>
@@ -572,34 +603,34 @@ function Index() {
         </section>
 
         {/* Credits */}
-        <section id="credits" className="border-t border-border bg-secondary/60 py-20 sm:py-28">
+        <section id="credits" className="pt-12 sm:pt-16">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal">
               <span className="label-caps text-primary">03 — Credits</span>
-              <h2 className="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] leading-[0.95]">
-                Selected <span className="italic text-primary">filmography</span>
+              <h2 className="mt-3 font-heading text-[clamp(2.625rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+                Selected <span className="gradient-text">filmography</span>
               </h2>
             </div>
 
-            <div className="mt-14 grid gap-x-16 gap-y-14 lg:grid-cols-2">
+            <div className="mt-8 grid gap-3 lg:grid-cols-2 lg:gap-4">
               {creditGroups.map((group) => (
-                <div key={group.heading} className="reveal">
-                  <h3 className="label-caps border-b border-ink/20 pb-3 text-ink">
+                <div key={group.heading} className="reveal glass rounded-lg p-3 sm:p-4">
+                  <h3 className="label-caps border-b border-border pb-2 text-primary">
                     {group.heading}
                   </h3>
                   <ul className="divide-y divide-border">
                     {group.items.map((item, i) => (
                       <li
                         key={item.title}
-                        className="group flex items-baseline gap-4 py-4 transition-colors hover:text-primary"
+                        className="group flex items-baseline gap-2.5 py-1.5 transition-colors hover:text-primary"
                       >
-                        <span className="w-6 shrink-0 text-xs tabular-nums text-muted-foreground">
+                        <span className="w-4 shrink-0 text-[10px] tabular-nums text-muted-foreground">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="font-display text-2xl leading-tight sm:text-3xl">
+                        <span className="font-heading text-sm font-medium leading-[1.2] tracking-[-0.01em] sm:text-base">
                           {item.title}
                         </span>
-                        <span className="ml-auto shrink-0 text-right text-[11px] uppercase tracking-widest text-muted-foreground">
+                        <span className="ml-auto shrink-0 text-right text-[9px] uppercase tracking-widest text-muted-foreground">
                           {item.detail}
                         </span>
                       </li>
@@ -612,13 +643,13 @@ function Index() {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="py-20 sm:py-28">
+        <section id="gallery" className="pt-12 sm:pt-16">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal flex flex-wrap items-end justify-between gap-4">
               <div>
                 <span className="label-caps text-primary">04 — Gallery</span>
-                <h2 className="mt-3 font-display text-[clamp(2.25rem,6vw,4.5rem)] leading-[0.95]">
-                  Looks & <span className="italic text-primary">headshots</span>
+                <h2 className="mt-3 font-heading text-[clamp(2.625rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+                  Looks & <span className="gradient-text">headshots</span>
                 </h2>
               </div>
               <p className="max-w-sm text-sm text-muted-foreground">
@@ -626,43 +657,49 @@ function Index() {
               </p>
             </div>
 
-            <div className="reveal mt-12 columns-2 gap-4 sm:gap-5 lg:columns-3 xl:columns-4">
-              {photos.map((photo, i) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  onClick={() => setLightboxIndex(i)}
-                  className="lift mb-4 block w-full overflow-hidden rounded-sm sm:mb-5"
-                  aria-label={`Open image: ${photo.alt}`}
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    className="w-full object-cover"
-                  />
-                </button>
+            <div className="mt-6 flex gap-3 sm:gap-4">
+              {galleryColumns.map((column, ci) => (
+                <div key={ci} className="flex flex-1 flex-col gap-3 sm:gap-4">
+                  {column.map(({ photo, index }) => (
+                    <button
+                      key={photo.src}
+                      type="button"
+                      onClick={() => setLightboxIndex(index)}
+                      style={{ aspectRatio: photo.ratio }}
+                      className="lift group relative block w-full overflow-hidden rounded-2xl border border-border"
+                      aria-label={`Open image: ${photo.alt}`}
+                    >
+                      <img
+                        src={photo.src}
+                        alt={photo.alt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
+                      />
+                      <span className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    </button>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Contact */}
-        <section id="contact" className="bg-ink py-20 text-ink-foreground sm:py-28">
+        <section id="contact" className="pt-12 pb-8 sm:pt-16 sm:pb-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-            <div className="reveal grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+            <div className="reveal glass-strong grid gap-8 rounded-[2.5rem] p-6 sm:p-9 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:p-12">
               <div>
                 <span className="label-caps text-primary">05 — Contact</span>
-                <h2 className="mt-3 font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.9]">
-                  Let’s create <span className="italic text-primary">together</span>
+                <h2 className="mt-3 font-heading text-[clamp(2.625rem,4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em]">
+                  Let’s create <span className="gradient-text">together</span>
                 </h2>
-                <p className="mt-6 max-w-md leading-relaxed text-ink-foreground/65">
+                <p className="mt-6 max-w-md text-base leading-relaxed text-ink-foreground/65 sm:text-lg">
                   Available for feature films, web series, commercials and short films.
                   Auditions on request — self-tapes delivered within 24 hours.
                 </p>
               </div>
 
-              <ul className="divide-y divide-ink-foreground/15 border-y border-ink-foreground/15">
+              <div className="grid grid-cols-2 gap-2">
                 {[
                   {
                     icon: Phone,
@@ -692,44 +729,47 @@ function Index() {
                   const Icon = row.icon;
                   const inner = (
                     <>
-                      <Icon size={18} className="text-primary" />
-                      <span className="label-caps w-24 shrink-0 text-ink-foreground/45">
+                      <span className="flex items-center justify-between">
+                        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+                          <Icon size={12} className="text-primary" />
+                        </span>
+                        {row.href ? (
+                          <ArrowUpRight
+                            size={11}
+                            className="shrink-0 text-ink-foreground/35 transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                          />
+                        ) : null}
+                      </span>
+                      <span className="label-caps mt-1.5 block text-[10px] text-ink-foreground/40">
                         {row.label}
                       </span>
-                      <span className="break-all text-base sm:text-lg">{row.value}</span>
-                      {row.href ? (
-                        <ArrowUpRight
-                          size={18}
-                          className="ml-auto shrink-0 text-ink-foreground/40 transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                        />
-                      ) : null}
+                      <span className="mt-0.5 block truncate text-xs font-medium">{row.value}</span>
                     </>
                   );
-                  return (
-                    <li key={row.label}>
-                      {row.href ? (
-                        <a
-                          href={row.href}
-                          target={row.href.startsWith("http") ? "_blank" : undefined}
-                          rel={row.href.startsWith("http") ? "noreferrer noopener" : undefined}
-                          className="group flex items-center gap-4 py-5"
-                        >
-                          {inner}
-                        </a>
-                      ) : (
-                        <div className="flex items-center gap-4 py-5">{inner}</div>
-                      )}
-                    </li>
+                  return row.href ? (
+                    <a
+                      key={row.label}
+                      href={row.href}
+                      target={row.href.startsWith("http") ? "_blank" : undefined}
+                      rel={row.href.startsWith("http") ? "noreferrer noopener" : undefined}
+                      className="glass group rounded-lg p-2.5 transition-colors hover:bg-white/10"
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div key={row.label} className="glass rounded-lg p-2.5">
+                      {inner}
+                    </div>
                   );
                 })}
-              </ul>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-ink pb-10 text-ink-foreground/50">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 border-t border-ink-foreground/15 px-5 pt-8 text-xs sm:flex-row sm:px-8">
+      <footer className="pb-8 pt-4">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-4 border-t border-border px-5 pt-6 text-xs text-muted-foreground sm:flex-row sm:px-8">
           <p>© {new Date().getFullYear()} Avinash Vijayan · Actor</p>
           <a
             href={INSTAGRAM_URL}
@@ -745,7 +785,7 @@ function Index() {
       {/* Lightbox */}
       {lightboxIndex !== null ? (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/80 p-4 backdrop-blur-xl"
           role="dialog"
           aria-modal="true"
           onClick={closeLightbox}
@@ -754,7 +794,7 @@ function Index() {
             type="button"
             onClick={closeLightbox}
             aria-label="Close"
-            className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink-foreground/25 text-ink-foreground"
+            className="glass absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-foreground"
           >
             <X size={20} />
           </button>
@@ -765,7 +805,7 @@ function Index() {
               step(-1);
             }}
             aria-label="Previous image"
-            className="absolute left-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink-foreground/25 text-ink-foreground sm:left-6"
+            className="glass absolute left-3 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-foreground sm:left-6"
           >
             <ChevronLeft size={20} />
           </button>
@@ -773,8 +813,11 @@ function Index() {
             src={photos[lightboxIndex]!.src}
             alt={photos[lightboxIndex]!.alt}
             onClick={(e) => e.stopPropagation()}
-            className="max-h-[85dvh] max-w-full rounded-sm object-contain"
+            className="max-h-[85dvh] max-w-full rounded-2xl object-contain shadow-[0_40px_100px_-30px_rgba(0,0,0,0.7)]"
           />
+          <span className="glass-chip label-caps absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full px-3.5 py-1.5 text-ink-foreground">
+            {lightboxIndex + 1} / {photos.length}
+          </span>
           <button
             type="button"
             onClick={(e) => {
@@ -782,7 +825,7 @@ function Index() {
               step(1);
             }}
             aria-label="Next image"
-            className="absolute right-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink-foreground/25 text-ink-foreground sm:right-6"
+            className="glass absolute right-3 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink-foreground sm:right-6"
           >
             <ChevronRight size={20} />
           </button>
