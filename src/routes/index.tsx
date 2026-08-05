@@ -14,22 +14,22 @@ import {
 } from "lucide-react";
 
 import photoStreet from "../assets/_MG_0812 (1).jpg";
-import photoSky from "../assets/actor-cover pic.png";
+import photoSky from "../assets/actor-cover pic.webp";
 import photoMono from "../assets/20240619_172907.jpg";
 import photoBw from "../assets/Barabas.jpg";
-import photoCloseUp from "../assets/Avinash 1.png";
+import photoCloseUp from "../assets/Avinash 1.webp";
 import photoFull from "../assets/IMG_9608.jpg";
 import photoMundu from "../assets/Avinash 3.jpg";
 import photoSmile from "../assets/Avinash1.jpg";
-import photoBag from "../assets/model_photoshoot.png";
-import photoIntense from "../assets/Screenshot 2026-06-22 225425.png";
-import photoEdge from "../assets/photoshoot.png";
-import photoStudio from "../assets/1000 Babies.png";
+import photoBag from "../assets/model_photoshoot.webp";
+import photoIntense from "../assets/Screenshot 2026-06-22 225425.webp";
+import photoEdge from "../assets/photoshoot.webp";
+import photoStudio from "../assets/1000 Babies.webp";
 import photoWarm from "../assets/IMG-20251215-WA0050(1) (1).jpg";
 import photoKottiClose from "../assets/Kottikalaasham - close.jpg";
 import photoKottiFull from "../assets/Kottikalaasham - full.jpg";
 import photoKottiMid from "../assets/Kottikalaasham - mid.jpg";
-import photoModel from "../assets/model.png";
+import photoModel from "../assets/model.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
