@@ -13,23 +13,28 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-import photoStreet from "../assets/_MG_0812 (1).jpg";
+import photoStreet from "../assets/_MG_0812 (1).webp";
 import photoSky from "../assets/actor-cover pic.webp";
-import photoMono from "../assets/20240619_172907.jpg";
-import photoBw from "../assets/Barabas.jpg";
+import photoMono from "../assets/20240619_172907.webp";
+import photoBw from "../assets/Barabas.webp";
 import photoCloseUp from "../assets/Avinash 1.webp";
-import photoFull from "../assets/IMG_9608.jpg";
-import photoMundu from "../assets/Avinash 3.jpg";
-import photoSmile from "../assets/Avinash1.jpg";
+import photoFull from "../assets/IMG_9608.webp";
+import photoMundu from "../assets/Avinash 3.webp";
+import photoSmile from "../assets/Avinash1.webp";
 import photoBag from "../assets/model_photoshoot.webp";
 import photoIntense from "../assets/Screenshot 2026-06-22 225425.webp";
 import photoEdge from "../assets/photoshoot.webp";
 import photoStudio from "../assets/1000 Babies.webp";
-import photoWarm from "../assets/IMG-20251215-WA0050(1) (1).jpg";
-import photoKottiClose from "../assets/Kottikalaasham - close.jpg";
-import photoKottiFull from "../assets/Kottikalaasham - full.jpg";
-import photoKottiMid from "../assets/Kottikalaasham - mid.jpg";
+import photoWarm from "../assets/IMG-20251215-WA0050(1) (1).webp";
+import photoKottiClose from "../assets/Kottikalaasham - close.webp";
+import photoKottiFull from "../assets/Kottikalaasham - full.webp";
+import photoKottiMid from "../assets/Kottikalaasham - mid.webp";
 import photoModel from "../assets/model.webp";
+import photoFoliage from "../assets/063D79E2-B831-4DCA-A18C-E447890663EC.webp";
+import photoSeated from "../assets/20240619_172756_remastered-.webp";
+import photoAmazonMicro from "../assets/amazon micro series.webp";
+import photoCamera from "../assets/file_00000000e7287208bda881a7a6116b7b.webp";
+import photoPadavett from "../assets/padavett.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
@@ -51,6 +56,11 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoKottiMid, alt: "Kottikalaasham — mid-shot character look", ratio: 0.773 },
   { src: photoKottiFull, alt: "Kottikalaasham — full-length character look", ratio: 0.5606 },
   { src: photoModel, alt: "Close-up profile portrait of Avinash Vijayan with glasses", ratio: 0.8527 },
+  { src: photoFoliage, alt: "Close-up portrait of Avinash Vijayan against green foliage", ratio: 1.3242 },
+  { src: photoSeated, alt: "Editorial seated portrait of Avinash Vijayan", ratio: 0.6059 },
+  { src: photoAmazonMicro, alt: "Avinash Vijayan in a traditional mundu — Amazon Micro Series", ratio: 0.5622 },
+  { src: photoCamera, alt: "Close-up side-profile portrait of Avinash Vijayan against green foliage", ratio: 1.4415 },
+  { src: photoPadavett, alt: "Moody character portrait of Avinash Vijayan — Padavett", ratio: 0.5628 },
 ];
 
 const videos = [
