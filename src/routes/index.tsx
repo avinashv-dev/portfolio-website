@@ -464,7 +464,7 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="relative overflow-hidden pb-10 pt-24 lg:pb-14">
+        <section className="relative overflow-hidden pb-6 pt-24 lg:pb-8">
           <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal spotlight relative overflow-hidden rounded-[2rem] border border-white/10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]">
               <img
@@ -524,8 +524,8 @@ function Index() {
         </section>
 
         {/* Marquee */}
-        <div className="mx-auto mt-6 max-w-[1400px] px-5 sm:mt-8 sm:px-8">
-          <div className="glass overflow-hidden rounded-full py-3">
+        <div className="mx-auto mt-4 max-w-[1400px] px-5 sm:mt-5 sm:px-8">
+          <div className="glass overflow-hidden rounded-full px-4 py-2.5 sm:px-5">
             <div className="animate-marquee flex w-max gap-10 whitespace-nowrap pr-10">
               {[...marqueeItems, ...marqueeItems].map((item, i) => (
                 <span key={i} className="label-caps flex items-center gap-10 text-muted-foreground">
@@ -540,7 +540,7 @@ function Index() {
         </div>
 
         {/* Reel */}
-        <section id="reel" className="pt-12 sm:pt-16">
+        <section id="reel" className="pt-8 sm:pt-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -563,7 +563,7 @@ function Index() {
         </section>
 
         {/* Profile */}
-        <section id="profile" className="pt-12 sm:pt-16">
+        <section id="profile" className="pt-8 sm:pt-10">
           <div className="mx-auto grid max-w-[1400px] gap-8 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
             <div className="reveal">
               <div className="glass lift overflow-hidden rounded-[2rem] p-2">
@@ -618,7 +618,7 @@ function Index() {
         </section>
 
         {/* Credits */}
-        <section id="credits" className="pt-12 sm:pt-16">
+        <section id="credits" className="pt-8 sm:pt-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal">
               <span className="label-caps text-primary">03 — Credits</span>
@@ -658,7 +658,7 @@ function Index() {
         </section>
 
         {/* Gallery */}
-        <section id="gallery" className="pt-12 sm:pt-16">
+        <section id="gallery" className="pt-8 sm:pt-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -700,7 +700,7 @@ function Index() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="pt-12 pb-8 sm:pt-16 sm:pb-10">
+        <section id="contact" className="pt-8 pb-8 sm:pt-10 sm:pb-10">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <div className="reveal glass-strong grid gap-8 rounded-[2.5rem] p-6 sm:p-9 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:p-12">
               <div>
