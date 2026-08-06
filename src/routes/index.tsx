@@ -509,7 +509,7 @@ function Index() {
               </div>
             </div>
 
-            <dl className="glass mt-8 grid grid-cols-2 divide-x divide-y divide-border rounded-2xl sm:grid-cols-4 sm:divide-y-0">
+            <dl className="glass mt-8 grid grid-cols-2 divide-x divide-y divide-border overflow-hidden rounded-2xl sm:grid-cols-4 sm:divide-y-0">
               {stats.map((s) => (
                 <div key={s.label} className="flex items-center justify-center gap-2 px-3 py-3 sm:gap-2.5">
                   <dt className="font-heading text-xl font-medium tracking-[-0.02em] text-primary sm:text-2xl">
