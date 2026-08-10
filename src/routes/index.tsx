@@ -168,9 +168,10 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Brand & Digital",
     items: [
-      { title: "Torc", detail: "Advertisement" },
+      { title: "ChatGPT", detail: "Advertisement" },
       { title: "Jos Alukkas", detail: "Advertisement" },
       { title: "Nambisan Ghee", detail: "Advertisement" },
+      { title: "Torc", detail: "Advertisement" },
       { title: "Surya Comedy Sitcom", detail: "Television" },
       { title: "RU-Vlog", detail: "YouTube Channel" },
       { title: "Ponmutta", detail: "YouTube Channel" },
@@ -202,6 +203,7 @@ const marqueeItems = [
   "Disney+ Hotstar",
   "SonyLIV",
   "Amazon",
+  "ChatGPT",
   "Jos Alukkas",
   "Nambisan Ghee",
   "Torc",
@@ -369,9 +371,8 @@ function Index() {
       {/* Nav */}
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
         <div
-          className={`glass mx-auto flex max-w-[1400px] items-center justify-between rounded-full px-5 py-3 transition-all duration-500 sm:px-7 ${
-            scrolled ? "glass-strong" : ""
-          }`}
+          className={`glass mx-auto flex max-w-[1400px] items-center justify-between rounded-full px-5 py-3 transition-all duration-500 sm:px-7 ${scrolled ? "glass-strong" : ""
+            }`}
         >
           <a href="#top" className="font-heading text-xl font-medium tracking-[-0.02em] sm:text-2xl">
             Avinash <span className="gradient-text">Vijayan</span>
@@ -384,15 +385,13 @@ function Index() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`label-caps relative pb-1 transition-colors hover:text-primary ${
-                    isActive ? "text-primary" : "text-muted-foreground"
-                  }`}
+                  className={`label-caps relative pb-1 transition-colors hover:text-primary ${isActive ? "text-primary" : "text-muted-foreground"
+                    }`}
                 >
                   {link.label}
                   <span
-                    className={`absolute inset-x-0 -bottom-0.5 h-px bg-primary transition-transform duration-300 ${
-                      isActive ? "scale-x-100" : "scale-x-0"
-                    }`}
+                    className={`absolute inset-x-0 -bottom-0.5 h-px bg-primary transition-transform duration-300 ${isActive ? "scale-x-100" : "scale-x-0"
+                      }`}
                   />
                 </a>
               );
@@ -421,9 +420,8 @@ function Index() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 bg-ink/95 text-ink-foreground backdrop-blur-2xl transition-all duration-300 lg:hidden ${
-          isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-40 bg-ink/95 text-ink-foreground backdrop-blur-2xl transition-all duration-300 lg:hidden ${isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          }`}
       >
         <nav className="flex h-dvh flex-col justify-center gap-1 px-8">
           {navLinks.map((link, i) => (
