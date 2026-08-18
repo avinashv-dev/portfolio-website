@@ -35,6 +35,8 @@ import photoSeated from "../assets/20240619_172756_remastered-.webp";
 import photoAmazonMicro from "../assets/amazon micro series.webp";
 import photoCamera from "../assets/file_00000000e7287208bda881a7a6116b7b.webp";
 import photoPadavett from "../assets/padavett.webp";
+import photoRamsons1 from "../assets/ramsons 1.webp";
+import photoRamsons2 from "../assets/ramsons 2.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
@@ -61,6 +63,8 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoAmazonMicro, alt: "Avinash Vijayan in a traditional mundu — Amazon Micro Series", ratio: 0.5622 },
   { src: photoCamera, alt: "Close-up side-profile portrait of Avinash Vijayan against green foliage", ratio: 1.4415 },
   { src: photoPadavett, alt: "Moody character portrait of Avinash Vijayan — Padavett", ratio: 0.5628 },
+  { src: photoRamsons1, alt: "Seated portrait of Avinash Vijayan in mundu and kurta — Ramsons", ratio: 0.634 },
+  { src: photoRamsons2, alt: "Studio portrait of Avinash Vijayan in mundu and kurta — Ramsons", ratio: 0.6677 },
 ];
 
 const videos = [
@@ -169,6 +173,7 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
     heading: "Brand & Digital",
     items: [
       { title: "ChatGPT", detail: "Advertisement" },
+      { title: "Ramsons", detail: "Advertisement" },
       { title: "Jos Alukkas", detail: "Advertisement" },
       { title: "Nambisan Ghee", detail: "Advertisement" },
       { title: "Torc", detail: "Advertisement" },
