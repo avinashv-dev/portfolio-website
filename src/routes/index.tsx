@@ -88,6 +88,7 @@ const videos = [
   { id: "1215660760", label: "Showreel Clip 11", tag: "Showreel" },
   { id: "1215661954", label: "Showreel Clip 12", tag: "Showreel" },
   { id: "1215662010", label: "Showreel Clip 13", tag: "Showreel" },
+  { id: "1227965006", label: "Showreel Clip 14", tag: "Showreel" },
 ];
 
 export const Route = createFileRoute("/")({
