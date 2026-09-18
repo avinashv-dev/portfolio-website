@@ -169,12 +169,12 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Short Films",
     items: [
-      { title: "Antharaalam", detail: "Short Film", watchId: "1227965006" },
+      { title: "Antharaalam", detail: "Short Film" },
       { title: "Kottikalaasham", detail: "Short Film" },
-      { title: "Padayani", detail: "Short Film", watchId: "1215142541" },
-      { title: "Father", detail: "Short Film", watchId: "1215660541" },
-      { title: "The Human Expiry", detail: "Short Film", watchId: "1215660760" },
-      { title: "Liberation", detail: "Short Film", watchId: "1215660481" },
+      { title: "Padayani", detail: "Short Film" },
+      { title: "Father", detail: "Short Film" },
+      { title: "The Human Expiry", detail: "Short Film" },
+      { title: "Liberation", detail: "Short Film" },
     ],
   },
   {
