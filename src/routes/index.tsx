@@ -53,7 +53,7 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoStudio, alt: "Studio headshot of Avinash Vijayan", ratio: 0.5334 },
   { src: photoWarm, alt: "Portrait study of Avinash Vijayan", ratio: 0.5 },
   { src: photoCloseUp, alt: "Close-up portrait of Avinash Vijayan", ratio: 0.7143 },
-  { src: photoMono, alt: "Avinash Vijayan looking over his shoulder in a forest", ratio: 0.462 },
+  { src: photoMono, alt: "Avinash Vijayan looking over his shoulder in a forest", ratio: 0.4626 },
   { src: photoKottiClose, alt: "Kottikalaasham — close-up character look", ratio: 0.8205 },
   { src: photoKottiMid, alt: "Kottikalaasham — mid-shot character look", ratio: 0.773 },
   { src: photoKottiFull, alt: "Kottikalaasham — full-length character look", ratio: 0.5606 },
