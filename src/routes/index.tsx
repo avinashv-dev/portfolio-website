@@ -40,6 +40,7 @@ import photoRamsons2 from "../assets/ramsons 2.webp";
 import photoPillar from "../assets/IMG_3161.webp";
 import photoGarlandLook from "../assets/file_0000000082188211ae2e7a40b5b8449f.webp";
 import photoGarlandLeaning from "../assets/file_00000000cc148211aee0069faa6a14b3.webp";
+import instagramLogo from "../assets/instagram-logo.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
@@ -74,21 +75,21 @@ const photos: { src: string; alt: string; ratio: number }[] = [
 ];
 
 const videos = [
+  { id: "1227965006", label: "Antharalam", tag: "Short Film" },
+  { id: "1215142541", label: "Padayani", tag: "Short Film" },
+  { id: "1215660760", label: "The Human Expiry", tag: "Short Film" },
+  { id: "1215660541", label: "Father", tag: "Short Film" },
+  { id: "1215660481", label: "Liberation", tag: "Short Film" },
   { id: "1215364108", label: "Torc — Advertisement", tag: "Advertisement", featured: true },
-  { id: "1215142541", label: "Showreel Clip 01", tag: "Showreel" },
-  { id: "1215143652", label: "Showreel Clip 02", tag: "Showreel" },
-  { id: "1215143766", label: "Showreel Clip 03", tag: "Showreel" },
-  { id: "1215143829", label: "Showreel Clip 04", tag: "Showreel" },
-  { id: "1215143879", label: "Showreel Clip 05", tag: "Showreel" },
-  { id: "1215144497", label: "Showreel Clip 06", tag: "Showreel" },
-  { id: "1215145427", label: "Showreel Clip 07", tag: "Showreel" },
-  { id: "1215145570", label: "Showreel Clip 08", tag: "Showreel" },
-  { id: "1215660481", label: "Showreel Clip 09", tag: "Showreel" },
-  { id: "1215660541", label: "Showreel Clip 10", tag: "Showreel" },
-  { id: "1215660760", label: "Showreel Clip 11", tag: "Showreel" },
-  { id: "1215661954", label: "Showreel Clip 12", tag: "Showreel" },
-  { id: "1215662010", label: "Showreel Clip 13", tag: "Showreel" },
-  { id: "1227965006", label: "Showreel Clip 14", tag: "Showreel" },
+  { id: "1215143652", label: "Showreel Clip 01", tag: "Showreel" },
+  { id: "1215143766", label: "Showreel Clip 02", tag: "Showreel" },
+  { id: "1215143829", label: "Showreel Clip 03", tag: "Showreel" },
+  { id: "1215143879", label: "Showreel Clip 04", tag: "Showreel" },
+  { id: "1215144497", label: "Showreel Clip 05", tag: "Showreel" },
+  { id: "1215145427", label: "Showreel Clip 06", tag: "Showreel" },
+  { id: "1215145570", label: "Showreel Clip 07", tag: "Showreel" },
+  { id: "1215661954", label: "Showreel Clip 08", tag: "Showreel" },
+  { id: "1215662010", label: "Showreel Clip 09", tag: "Showreel" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -145,7 +146,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-type Credit = { title: string; detail: string; year?: string };
+type Credit = { title: string; detail: string; year?: string; watchId?: string };
 
 const creditGroups: { heading: string; items: Credit[] }[] = [
   {
@@ -168,12 +169,12 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Short Films",
     items: [
-      { title: "Antharaalam", detail: "Short Film" },
+      { title: "Antharaalam", detail: "Short Film", watchId: "1227965006" },
       { title: "Kottikalaasham", detail: "Short Film" },
-      { title: "Padayani", detail: "Short Film" },
-      { title: "Father", detail: "Short Film" },
-      { title: "The Human Expiry", detail: "Short Film" },
-      { title: "Liberation", detail: "Short Film" },
+      { title: "Padayani", detail: "Short Film", watchId: "1215142541" },
+      { title: "Father", detail: "Short Film", watchId: "1215660541" },
+      { title: "The Human Expiry", detail: "Short Film", watchId: "1215660760" },
+      { title: "Liberation", detail: "Short Film", watchId: "1215660481" },
     ],
   },
   {
@@ -208,7 +209,7 @@ const training = [
 const stats = [
   { value: "20+", label: "Screen Credits" },
   { value: "6+", label: "Short Films" },
-  { value: "3", label: "Brand Films" },
+  { value: "6+", label: "Brand Films" },
   { value: "4", label: "Languages" },
 ];
 
@@ -416,7 +417,7 @@ function Index() {
               aria-label="Instagram"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(135deg,#feda75,#d62976_55%,#4f5bd5)] shadow-[0_6px_18px_-6px_rgba(214,41,118,0.7)] backdrop-blur-md transition-transform hover:scale-110"
             >
-              <Instagram size={16} className="text-white" strokeWidth={2} />
+              <img src={instagramLogo} alt="" className="h-5 w-5" />
             </a>
           </nav>
 
@@ -657,9 +658,21 @@ function Index() {
                         <span className="font-heading text-sm font-medium leading-[1.2] tracking-[-0.01em] sm:text-base">
                           {item.title}
                         </span>
-                        <span className="ml-auto shrink-0 text-right text-[9px] uppercase tracking-widest text-muted-foreground">
-                          {item.detail}
-                        </span>
+                        {item.watchId ? (
+                          <a
+                            href={`https://vimeo.com/${item.watchId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="ml-auto flex shrink-0 items-center gap-1 text-right text-[9px] uppercase tracking-widest text-muted-foreground transition-colors hover:text-primary"
+                          >
+                            watch /{item.title.toLowerCase().replace(/\s+/g, "-")}
+                            <ArrowUpRight className="h-2.5 w-2.5" />
+                          </a>
+                        ) : (
+                          <span className="ml-auto shrink-0 text-right text-[9px] uppercase tracking-widest text-muted-foreground">
+                            {item.detail}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
