@@ -415,9 +415,9 @@ function Index() {
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Instagram"
-              className="flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center overflow-visible transition-transform hover:scale-110"
             >
-              <img src={instagramLogo} alt="" className="h-10 w-10" />
+              <img src={instagramLogo} alt="" className="h-10 w-10 max-w-none" />
             </a>
           </nav>
 
