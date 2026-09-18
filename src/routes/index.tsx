@@ -576,7 +576,7 @@ function Index() {
                     alt="Avinash Vijayan looking over his shoulder in a forest"
                     loading="lazy"
                     className="aspect-[3/4] w-full object-cover"
-                    style={{ objectPosition: "50% 16%" }}
+                    style={{ objectPosition: "50% 24%" }}
                   />
                 </div>
               </div>
