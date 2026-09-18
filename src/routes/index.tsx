@@ -415,9 +415,9 @@ function Index() {
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Instagram"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-[linear-gradient(135deg,#feda75,#d62976_55%,#4f5bd5)] shadow-[0_6px_18px_-6px_rgba(214,41,118,0.7)] backdrop-blur-md transition-transform hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center transition-transform hover:scale-110"
             >
-              <img src={instagramLogo} alt="" className="h-5 w-5" />
+              <img src={instagramLogo} alt="" className="h-7 w-7" />
             </a>
           </nav>
 
