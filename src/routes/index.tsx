@@ -80,7 +80,7 @@ const videos = [
   { id: "1215660760", label: "The Human Expiry", tag: "Short Film" },
   { id: "1215660541", label: "Father", tag: "Short Film" },
   { id: "1215660481", label: "Liberation", tag: "Short Film" },
-  { id: "1215364108", label: "Torc — Advertisement", tag: "Advertisement", featured: true },
+  { id: "1215364108", label: "Torc", tag: "Advertisement", featured: true },
   { id: "1215143652", label: "Showreel Clip 01", tag: "Showreel" },
   { id: "1215143766", label: "Showreel Clip 02", tag: "Showreel" },
   { id: "1215143829", label: "Showreel Clip 03", tag: "Showreel" },
