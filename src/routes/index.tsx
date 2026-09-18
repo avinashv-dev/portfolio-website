@@ -575,7 +575,8 @@ function Index() {
                     src={photoMono}
                     alt="Avinash Vijayan looking over his shoulder in a forest"
                     loading="lazy"
-                    className="aspect-[3/4] w-full object-cover object-top"
+                    className="aspect-[3/4] w-full object-cover"
+                    style={{ objectPosition: "50% 20%" }}
                   />
                 </div>
               </div>
