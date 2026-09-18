@@ -37,6 +37,9 @@ import photoCamera from "../assets/file_00000000e7287208bda881a7a6116b7b.webp";
 import photoPadavett from "../assets/padavett.webp";
 import photoRamsons1 from "../assets/ramsons 1.webp";
 import photoRamsons2 from "../assets/ramsons 2.webp";
+import photoPillar from "../assets/IMG_3161.webp";
+import photoGarlandLook from "../assets/file_0000000082188211ae2e7a40b5b8449f.webp";
+import photoGarlandLeaning from "../assets/file_00000000cc148211aee0069faa6a14b3.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
 
@@ -65,6 +68,9 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoPadavett, alt: "Moody character portrait of Avinash Vijayan — Padavett", ratio: 0.5628 },
   { src: photoRamsons1, alt: "Seated portrait of Avinash Vijayan in mundu and kurta — Ramsons", ratio: 0.634 },
   { src: photoRamsons2, alt: "Studio portrait of Avinash Vijayan in mundu and kurta — Ramsons", ratio: 0.6677 },
+  { src: photoPillar, alt: "Avinash Vijayan in a white kurta by a traditional wooden pillar", ratio: 0.5628 },
+  { src: photoGarlandLook, alt: "Avinash Vijayan in a Nehru jacket against a floral garland backdrop", ratio: 0.5875 },
+  { src: photoGarlandLeaning, alt: "Avinash Vijayan leaning on a pillar against a floral garland backdrop", ratio: 0.5628 },
 ];
 
 const videos = [
@@ -144,7 +150,7 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Web Series",
     items: [
-      { title: "Amazon Micro Series", detail: "Amazon" },
+      { title: "Amazon Micro Series", detail: "Amazon - Hindi" },
       { title: "1000 Babies", detail: "Disney+ Hotstar" },
       { title: "Blindfold", detail: "SonyLIV · Upcoming" },
       { title: "Padavett", detail: "Upcoming" },
@@ -161,8 +167,8 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Short Films",
     items: [
-      { title: "Antharaalam", detail: "Upcoming" },
-      { title: "Kottikalaasham", detail: "Upcoming" },
+      { title: "Antharaalam", detail: "Short Film" },
+      { title: "Kottikalaasham", detail: "Short Film" },
       { title: "Padayani", detail: "Short Film" },
       { title: "Father", detail: "Short Film" },
       { title: "The Human Expiry", detail: "Short Film" },
@@ -172,6 +178,7 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Brand & Digital",
     items: [
+      { title: "Arun Textiles", detail: "Advertisement - Tamil" },
       { title: "ChatGPT", detail: "Advertisement" },
       { title: "Ramsons", detail: "Advertisement" },
       { title: "Jos Alukkas", detail: "Advertisement" },
