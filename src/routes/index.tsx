@@ -41,6 +41,8 @@ import photoPillar from "../assets/IMG_3161.webp";
 import photoGarlandLook from "../assets/file_0000000082188211ae2e7a40b5b8449f.webp";
 import photoGarlandLeaning from "../assets/file_00000000cc148211aee0069faa6a14b3.webp";
 import photo1000Babies from "../assets/1000babies.webp";
+import photoStreetPhone from "../assets/file_000000003db881fab33a0846a3d479ef.webp";
+import photoFieldGolden from "../assets/file_00000000d14481f48224ec80f923303e.webp";
 import instagramLogo from "../assets/instagram-logo.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
@@ -74,6 +76,8 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoGarlandLook, alt: "Avinash Vijayan in a Nehru jacket against a floral garland backdrop", ratio: 0.5875 },
   { src: photoGarlandLeaning, alt: "Avinash Vijayan leaning on a pillar against a floral garland backdrop", ratio: 0.5628 },
   { src: photo1000Babies, alt: "Avinash Vijayan in character — 1000 Babies", ratio: 0.6667 },
+  { src: photoStreetPhone, alt: "Avinash Vijayan in a textured black shirt, holding a phone", ratio: 0.4944 },
+  { src: photoFieldGolden, alt: "Golden hour portrait of Avinash Vijayan against a green field", ratio: 0.5219 },
 ];
 
 const videos = [
