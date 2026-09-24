@@ -40,6 +40,7 @@ import photoRamsons2 from "../assets/ramsons 2.webp";
 import photoPillar from "../assets/IMG_3161.webp";
 import photoGarlandLook from "../assets/file_0000000082188211ae2e7a40b5b8449f.webp";
 import photoGarlandLeaning from "../assets/file_00000000cc148211aee0069faa6a14b3.webp";
+import photo1000Babies from "../assets/1000babies.webp";
 import instagramLogo from "../assets/instagram-logo.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
@@ -72,6 +73,7 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoPillar, alt: "Avinash Vijayan in a white kurta by a traditional wooden pillar", ratio: 0.5628 },
   { src: photoGarlandLook, alt: "Avinash Vijayan in a Nehru jacket against a floral garland backdrop", ratio: 0.5875 },
   { src: photoGarlandLeaning, alt: "Avinash Vijayan leaning on a pillar against a floral garland backdrop", ratio: 0.5628 },
+  { src: photo1000Babies, alt: "Avinash Vijayan in character — 1000 Babies", ratio: 0.6667 },
 ];
 
 const videos = [
