@@ -187,6 +187,7 @@ const creditGroups: { heading: string; items: Credit[] }[] = [
   {
     heading: "Brand & Digital",
     items: [
+      { title: "Vanaura Organics", detail: "Advertisement" },
       { title: "Arun Textiles", detail: "Advertisement - Tamil" },
       { title: "ChatGPT", detail: "Advertisement" },
       { title: "Ramsons", detail: "Advertisement" },
