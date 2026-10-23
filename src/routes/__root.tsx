@@ -88,7 +88,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Official portfolio of Avinash Vijayan — actor, story-driven performer based in Ernakulam, Kerala." },
     ],
     links: [
-      { rel: "icon", href: "data:," },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { rel: "icon", href: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://api.fontshare.com" },
       {
         rel: "stylesheet",
