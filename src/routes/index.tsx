@@ -24,11 +24,8 @@ import photoSmile from "../assets/Avinash1.webp";
 import photoBag from "../assets/model_photoshoot.webp";
 import photoIntense from "../assets/Screenshot 2026-06-22 225425.webp";
 import photoEdge from "../assets/photoshoot.webp";
-import photoStudio from "../assets/1000 Babies.webp";
 import photoWarm from "../assets/IMG-20251215-WA0050(1) (1).webp";
-import photoKottiClose from "../assets/Kottikalaasham - close.webp";
 import photoKottiFull from "../assets/Kottikalaasham - full.webp";
-import photoKottiMid from "../assets/Kottikalaasham - mid.webp";
 import photoModel from "../assets/model.webp";
 import photoFoliage from "../assets/063D79E2-B831-4DCA-A18C-E447890663EC.webp";
 import photoSeated from "../assets/20240619_172756_remastered-.webp";
@@ -44,6 +41,10 @@ import photo1000Babies from "../assets/1000babies.webp";
 import photoStreetPhone from "../assets/file_000000003db881fab33a0846a3d479ef.webp";
 import photoFieldGolden from "../assets/file_00000000d14481f48224ec80f923303e.webp";
 import photoVanauraAd from "../assets/vanaura-ad.webp";
+import photoForestCigarSmile from "../assets/avinash-forest-cigar-smile.webp";
+import photoStairwellProfile from "../assets/avinash-stairwell-profile.webp";
+import photoForestCigarProfile from "../assets/avinash-forest-cigar-profile.webp";
+import photoPinkTshirt from "../assets/avinash-pink-tshirt.webp";
 import instagramLogo from "../assets/instagram-logo.webp";
 
 const INSTAGRAM_URL = "https://www.instagram.com/actor.avinaash_vijayan";
@@ -58,12 +59,9 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoStreet, alt: "Avinash Vijayan on location — street portrait", ratio: 0.6664 },
   { src: photoBag, alt: "Character look — Avinash Vijayan with glasses", ratio: 0.6293 },
   { src: photoEdge, alt: "Editorial character study of Avinash Vijayan", ratio: 0.5496 },
-  { src: photoStudio, alt: "Studio headshot of Avinash Vijayan", ratio: 0.5334 },
   { src: photoWarm, alt: "Portrait study of Avinash Vijayan", ratio: 0.5 },
   { src: photoCloseUp, alt: "Close-up portrait of Avinash Vijayan", ratio: 0.7143 },
   { src: photoMono, alt: "Avinash Vijayan looking over his shoulder in a forest", ratio: 0.4626 },
-  { src: photoKottiClose, alt: "Kottikalaasham — close-up character look", ratio: 0.8205 },
-  { src: photoKottiMid, alt: "Kottikalaasham — mid-shot character look", ratio: 0.773 },
   { src: photoKottiFull, alt: "Kottikalaasham — full-length character look", ratio: 0.5606 },
   { src: photoModel, alt: "Close-up profile portrait of Avinash Vijayan with glasses", ratio: 0.8527 },
   { src: photoFoliage, alt: "Close-up portrait of Avinash Vijayan against green foliage", ratio: 1.3242 },
@@ -80,6 +78,10 @@ const photos: { src: string; alt: string; ratio: number }[] = [
   { src: photoStreetPhone, alt: "Avinash Vijayan in a textured black shirt, holding a phone", ratio: 0.4944 },
   { src: photoFieldGolden, alt: "Golden hour portrait of Avinash Vijayan against a green field", ratio: 0.5219 },
   { src: photoVanauraAd, alt: "Avinash Vijayan in a traditional white and red costume for the Vanaura advertisement", ratio: 0.5635 },
+  { src: photoForestCigarSmile, alt: "Smiling portrait of Avinash Vijayan holding a cigar in a forest", ratio: 1.7768 },
+  { src: photoStairwellProfile, alt: "Side-profile portrait of Avinash Vijayan on a stairwell", ratio: 1.7768 },
+  { src: photoForestCigarProfile, alt: "Side-profile portrait of Avinash Vijayan smoking a cigar in a forest", ratio: 1.7768 },
+  { src: photoPinkTshirt, alt: "Candid portrait of Avinash Vijayan in a pink t-shirt against greenery", ratio: 1.7768 },
 ];
 
 const videos = [
